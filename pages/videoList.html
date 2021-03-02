@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/videoList.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>	
+		<title></title>
+	</head>
+	<body>
+		<div id="videoList">
+			<div id="top"></div>
+			<el-row>
+			  <el-col :span="24">
+				  <div class="top">
+						<ul>
+							<li><a href="index.html" title="回到首页">首页</a></li>
+							<li v-for="item in kindData" :key="item.id"
+							@click="handleSelectKind(item.id)">{{item.name}}</li>
+						</ul>
+						<div class="search">
+							  <el-autocomplete
+							    v-model="state"
+							    :fetch-suggestions="querySearchAsync"
+							    placeholder="请输入内容"
+							    @select="handleSelect"
+							  ></el-autocomplete>
+							   <el-button slot="append" icon="el-icon-search"@click="handleSearch"></el-button>
+						</div>
+						<ul class="loginMSG">
+							<li v-if="!isLogin"><a href="login.html">登录</a></li>
+							<li v-if="!isLogin"><a href="register.html">注册</a></li>
+							<li v-if="isLogin" @click="isLogin = false">退出</li>
+						</ul>
+					</div>
+			  </el-col>			
+			</el-row>
+			<el-row type="flex" class="row-bg" justify="center">
+				<el-col :span="13">
+					<div class="content">
+						<div v-for="item in searchResult" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140" @click="handleSelectVideo(item.id)">
+								<p @click="handleSelectVideo(item.id)">
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleSelectKind(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</el-col>
+				<el-col :span="5">
+					<el-card class="box-card youLike">
+					  <div slot="header" class="clearfix">
+					    <span>猜你喜欢</span>
+					  </div>
+					  <div class="commend">
+						  <div v-for="item in commendList">
+							  <img :src="item.src" alt="" width="130" height="90" @click="goToVideo(item.TextId)" >
+							  <div>
+								  <h3 @click="goToVideo(item.TextId)">{{item.title}}</h3>
+								  <p><span @click="goToUserMSG(item.author)">{{item.name}}</span></p>
+								  <p><span>{{item.readAccount}}播放</span><span>{{item.replyAccount}}评论</span></p>
+							  </div>
+						  </div>
+						  
+					  </div>
+					  <h3 class="more" @click="getMore">查看更多>></h3>
+					</el-card>
+
+				</el-col>
+			</el-row>
+			<div id="goTop">
+				<a href="#top" title="回到顶部"></a>
+			</div>
+		</div>
+		<script src="../js/videoList.js"></script>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: lightgray;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #79CDCD;
+	font-size: 14px;
+}
+.top {
+	background-color: #fff;
+	padding: 15px;
+}
+.authorMSG {
+	background-color: white;
+	margin-top: 10px;
+	padding: 20px;
+}
+.authorMSG h3 {
+	font-weight: 500;
+	margin: 0;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	color: #1E90FF;
+	border-bottom: 1px dotted gray;
+	display: flex;
+	justify-content: flex-start;
+}
+.authorMSG h3 span {
+	width: 30px;
+	height: 30px;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.authorMSG .author {
+	display: flex;
+	justify-content: flex-start;
+}
+.authorMSG .author img {
+	border-radius: 50%;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.authorMSG .author .name {
+	font-size: 14px;
+	color: #00CED1;
+	cursor: pointer;
+}
+.authorMSG .author .name:hover {
+	color: #40E0D0;
+}
+.authorMSG .author button {
+	margin-left: 50px;
+}
+.authorMSG .messageOther ul {
+	display: flex;
+	justify-content: flex-start;
+	padding: 0;
+	padding-left: 8px;
+}
+.authorMSG .messageOther ul li {
+	width: 23%;
+}
+.authorMSG .messageOther ul li span {
+	display: block;
+	line-height: 30px;
+}
+.authorMSG .messageOther ul li span:nth-child(2n+1) {
+	color: gray;
+}
+.authorMSG .messageOther ul li:nth-child(1) span, .authorMSG .messageOther ul li:nth-child(2) span {
+	cursor: pointer;
+}
+.authorMSG .messageOther .tankMSG {
+	display: flex;
+	justify-content: flex-start;
+	padding-left: 6px;
+}
+.authorMSG .messageOther .tankMSG p {
+	margin-right: 50px;
+}
+.authorMSG .messageOther .level {
+	display: flex;
+	justify-content: flex-start;
+}
+.authorMSG .messageOther .level span:nth-child(2){
+	background-image: url('../public/icons/level.svg');
+	-webkit-background-size: 40px 40px;
+	background-size: 40px 40px;
+	background-repeat: no-repeat;
+	background-position: -8px -10px;
+	text-indent: 1.5em;
+}
+.authorMSG .messageOther .level span:nth-child(1), .authorMSG .messageOther .integral span:nth-child(1) {
+	color: gray;
+}
+.authorMSG .messageOther .contact {
+	display: flex;
+	justify-content: space-between;
+}
+.authorMSG .messageOther .contact a {
+	font-size: 13px;
+}
+.content {
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 30px;
+	margin-left: 8px;
+}
+.el_box {
+	margin-top: 11px;
+	background-color: white;
+	margin-left: 8px;
+	padding: 15px;
+}
+.comment h3 {
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.comment .commentChild {
+	max-width: 780px;
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+.comment .commentChild img {
+	border-radius: 50%;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.comment .commentChild .name {
+	color: red;
+	cursor: pointer;
+}
+.comment .commentChild .beReply {
+	color: gray;
+	cursor: pointer;
+}
+.comment .commentChild .name:hover, .comment .commentChild .beReply:hover {
+	color: #00B2EE;
+}
+.comment .commentChild p.content {
+	margin: 0;
+	font-size: 14px;
+	margin-top: 5px;
+	padding: 0;
+	color: #4F4F4F;
+}
+.comment .commentChild span {
+	margin-right: 20px;
+}
+time {
+	color: gray;
+}
+
+.comment  .replyBtn {
+	color: #63B8FF;
+	cursor: pointer;
+}
+.comment .replyBtn:hover {
+	color: #0000CD;
+}
+.comment .fReply {
+	display: block;
+	width: 30px;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+.el-divider {
+	margin-top: 80px;
+}
+#sendComment {
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 1px;
+}
+#goTop {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 80px;
+	bottom: 60px;
+}
+#goTop a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: url('../public/icons/goTop.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+#goTop a:hover {
+	color: red;
+}

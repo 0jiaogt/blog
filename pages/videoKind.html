@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/videoKind.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>	
+		<title>视频专区</title>
+	</head>
+	<body>
+		<div id="videoKind">
+			<div class="top">
+				<el-card class="box-card kindCard">
+				  <div class="kind">
+				  		<span v-for="item in videoKind" :key="item.id" @click="handleKindSelect(item.id)">{{item.name}}<span>{{item.total}}</span></span>				
+				  </div>
+				</el-card>
+				<div class="search">
+					  <el-autocomplete
+					    v-model="state"
+					    :fetch-suggestions="querySearchAsync"
+					    placeholder="请输入内容"
+					    @select="handleSelect"
+					  ></el-autocomplete>
+					   <el-button slot="append" icon="el-icon-search"@click="handleSearch"></el-button>
+				</div>
+			</div>
+			<div class="videoCommend">
+				<div class="hotCommend">
+					<span class="more" @click="watchMore(0)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>热门推荐</h3>
+						<p><span></span>最火最热的人气推荐</p>
+						
+					</div>
+					
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend qianyan">
+					<span class="more" @click="watchMore(1)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>Java</h3>
+						<p><span></span>Java入门到精通只需一个月</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend second">
+					<span class="more" @click="watchMore(2)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>python</h3>
+						<p><span></span>爬虫，爬取所需</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend third">
+					<span class="more" @click="watchMore(3)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>C++</h3>
+						<p><span></span>了解高级语言开发</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend fourth">
+					<span class="more" @click="watchMore(4)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>人工智能</h3>
+						<p><span></span>了解人工智能，接轨新世界</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend fifth">
+					<span class="more" @click="watchMore(5)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>神经网络</h3>
+						<p><span></span>神经网络原理解析最全面</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend sixth">
+					<span class="more" @click="watchMore(6)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>大数据</h3>
+						<p><span></span>小小世界的强大，因为大数据的应用</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="hotCommend seventh">
+					<span class="more" @click="watchMore(7)">>>查看更多</span>
+					<div class="title">
+						<h3><span></span>HTML</h3>
+						<p><span></span>开发你自己的网站</p>
+					</div>
+					<div class="content">
+						<div v-for="item in hotCommend" :key="item.id">
+							<div>
+								<img :src="item.src" alt="" width="230" height="140">
+								<p>
+									{{item.title}}
+								</p>
+							</div>
+							<span @click="handleKindSelect(item.categoryId)">{{item.category}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="menu" ref="rightMenu">
+				<ul>
+					<li v-for="(item,index) in videoKind" :key="item.id" @click="moveScrollTo(index)">{{item.name}}</li>
+				</ul>
+			</div>
+		</div>
+		
+		<script src="../js/videoKind.js"></script>
+	</body>
+</html>

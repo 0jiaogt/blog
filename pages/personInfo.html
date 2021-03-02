@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/personInfo.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+		<title>个人信息</title>
+	</head>
+	<body>
+		<div id="personInfo">
+			<div id="top"></div>
+			<el-row type="flex" class="row-bg" justify="center">
+			 <el-col :span="15">
+				 <div class="top">
+					 <img src="../public/images/baiyun.jpg" alt="" width="100" height="100">
+					 <div>
+						 <span class="name">我是愤愤然</span>
+						 <p class="level"><span>等级：</span><span>7</span></p>
+					 </div>
+					 <div class="btn">
+						 <el-button type="danger" plain size="small" @click="doAttention(userData.userId)">关注</el-button>
+						 <el-button type="danger" plain size="small" @click="sendMessage(userData.userId)">私信</el-button>
+					 </div>
+				 </div>
+				 <div class="workingInfo">
+					 <template>
+					   <el-tabs v-model="activeName" @tab-click="handleClick">
+					     <el-tab-pane :label="'文章 '+textTotal" name="first">
+							
+							   <div class="infinite-list-wrapper" style="overflow:auto">
+							     <ul
+							       class="list"
+								   v-infinite-scroll="scorllEvent"
+							       infinite-scroll-disabled="disabled">
+							       <li v-for="(item,index) in textData" :key="index" class="list-item">
+									   <div class="textInfo">
+										 <h3>{{item.title}}</h3>
+										 <p class="content">
+											{{item.content}}
+										 </p>
+										 <p class="time">
+											 <span><span>阅读:{{item.readAccount}}</span><span>评论:{{item.replyAccount}}</span></span><span><time :datetime="item.time">{{item.time}}</time></span>
+									   								 </p>
+									   </div>
+								   </li>
+							     </ul>
+							     <p v-if="textLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+							     <p v-if="noMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+							   </div>
+							
+							
+						 </el-tab-pane>
+					     <el-tab-pane :label="'视频 '+videoTotal" name="second">
+							 <template>
+							   <div class="infinite-list-wrapper" style="overflow:auto">
+							     <ul
+							       class="list videoList"
+							       infinite-scroll-disabled="videoDisabled">
+							       <li v-for="item in videoData" class="list-item">
+									   <div class="video">
+										 <img :src="item.src" alt="" width="220" height="130">
+										 <h3>{{item.title}}</h3>
+										 <p><span><span>播放:</span><span>评论:</span></span><span><time>2019-01-01</time></span></p>
+									   </div>
+								   </li>
+							     </ul>
+							     <p v-if="videoLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+							     <p v-if="videoNoMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+							   </div>
+							 </template>
+							 
+						 </el-tab-pane>
+					     <el-tab-pane label="收藏" name="third">
+								<template>
+								  <el-tabs v-model="collectActiveName" type="card" @tab-click="collectHandleClick">
+								    <el-tab-pane :label="'文章收藏 '+collectTextTotal" name="first">
+										<div class="infinite-list-wrapper" style="overflow:auto">
+										  <ul
+										    class="list"
+											v-infinite-scroll="scorllEvent"
+										    infinite-scroll-disabled="collectTextdisabled">
+										    <li v-for="(item,index) in collectTextData" :key="index" class="list-item">
+											<div class="textInfo">
+																														 <h3>{{item.title}}</h3>
+												<p class="content">{{item.content}}</p>
+											<p class="time">
+										<span><span>阅读:{{item.readAccount}}</span><span>评论:{{item.replyAccount}}</span></span><span><time :datetime="item.time">{{item.time}}</time></span> </p>
+											</div>
+											</li>
+										  </ul>
+										  <p v-if="collectTextLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+										  <p v-if="collectTextNoMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+										</div>
+									</el-tab-pane>
+								    <el-tab-pane :label="'视频收藏 '+collectVideoTotal" name="second">
+										  <div class="infinite-list-wrapper" style="overflow:auto">
+										    <ul
+										      class="list videoList"
+										      infinite-scroll-disabled="collectVideoDisabled">
+										      <li v-for="item in collectVideoData" class="list-item">
+																			   <div class="video">
+																				 <img :src="item.src" alt="" width="220" height="130">
+																				 <h3>{{item.title}}</h3>
+																				 <p><span><span>播放:</span><span>评论:</span></span><span><time>2019-01-01</time></span></p>
+																			   </div>
+																		   </li>
+										    </ul>
+										    <p v-if="collectVideoLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+										    <p v-if="collectVideoNoMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+										  </div>
+									</el-tab-pane>
+								  </el-tabs>
+								</template>
+						 </el-tab-pane>
+					     <el-tab-pane :label="'粉丝 '+userData.likedNum" name="fourth">
+							 <template>
+							   <div class="infinite-list-wrapper" style="overflow:auto">
+							     <ul
+							       class="list fansList"
+							       infinite-scroll-disabled="fansDisabled">
+							       <li v-for="item in fansData" class="list-item">
+									   <span class="name" :title="'查看'+item.name+'的个人信息'" @click="lookPersonInfo(item.likeUserId)">{{item.name}}</span> <span><el-button type="danger" plain size="small" @click="doAttention(item.likeUserId)" v-if="!judgeAttened(item.likeUserId)">关注</el-button><el-button plain size="small" v-if="judgeAttened(item.likeUserId)">已关注</el-button></span>
+								   </li>
+							     </ul>
+							     <p v-if="fansLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+							     <p v-if="fansNoMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+							   </div>
+							 </template>
+						 </el-tab-pane>
+						 <el-tab-pane :label="'他的关注 '+userData.likeManNum" name="fifth">
+							 <template>
+							   <div class="infinite-list-wrapper" style="overflow:auto">
+							     <ul
+							       class="list fansList"
+							       infinite-scroll-disabled="likeManDisabled">
+							       <li v-for="item in likeManData" class="list-item">
+									   <span class="name" :title="'查看'+item.name+'的个人信息'" @click="lookPersonInfo(item.likeUserId)">{{item.name}}</span> <span><el-button type="danger" plain size="small" @click="doAttention(item.likeUserId)" v-if="!judgeAttened(item.likeUserId)">关注</el-button><el-button plain size="small" v-if="judgeAttened(item.likeUserId)">已关注</el-button></span>
+								   </li>
+							     </ul>
+							     <p v-if="likeManLoading" class="loadTip"><el-divider>加载中...</el-divider></p>
+							     <p v-if="likeManNoMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+							   </div>
+							 </template>
+						 </el-tab-pane>
+					   </el-tabs>
+					 </template>
+				 </div>
+			 </el-col>
+			</el-row>
+		</div>
+		<script src="../js/personInfo.js"></script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file" id="file1">
+		<div id="result"></div>
+		<script>
+		/*
+		[loadstart]readyState:1;result:
+		[progress]readyState:1;result:h3{color: #F44336;}
+		[load]readyState:2;result:h3{color: #F44336;}
+		[loadend]readyState:2;result:h3{color: #F44336;}
+		*/
+		file1.onchange = function(){
+		    var reader = new FileReader();
+		    reader.readAsText(file1.files[0]);
+			reader.onprogress = function() {
+				console.log("ss")
+			}
+			console.log("ssa")
+		    // reader.onloadstart = function(e){
+		    //     console.log('[loadstart]readyState:' + reader.readyState + ';result:' + reader.result);
+		    // }
+		    // reader.onload = function(e){
+		    //     console.log('[load]readyState:' + reader.readyState + ';result:' + reader.result);
+		    // }
+		    // reader.onloadend = function(e){
+		    //     console.log('[loadend]readyState:' + reader.readyState + ';result:' + reader.result);
+		    // }
+		    // reader.onprogress = function(e){
+		    //     console.log('[progress]readyState:' + reader.readyState + ';result:' + reader.result);
+		    // }
+		}
+		</script>
+	</body>
+</html>

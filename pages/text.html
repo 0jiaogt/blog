@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/text.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+		<link rel="stylesheet" href="../css/goTop.css">
+		<title>文章分类</title>
+	</head>
+	<body>
+		<div id="text">
+			<div id="top"></div>
+			<el-row>
+			  <el-col :span="24">
+				  <div class="top">
+						<ul ref="topUl">
+							<li><a href="index.html">首页</a></li>
+							<li v-for="item in kindData" :key="item.id"
+							@click="handleSelectKind(item.id)">{{item.name}}</li>
+						</ul>
+						<div class="search">
+							  <el-autocomplete
+							    v-model="state"
+							    :fetch-suggestions="querySearchAsync"
+							    placeholder="请输入内容"
+							    @select="handleSelect"
+							  ></el-autocomplete>
+							   <el-button slot="append" icon="el-icon-search"@click="handleSearch"></el-button>
+						</div>
+						<ul class="loginMSG">
+							<li v-if="!isLogin"><a href="login.html">登录</a></li>
+							<li v-if="!isLogin"><a href="register.html">注册</a></li>
+							<li v-if="isLogin" @click="isLogin = false">退出</li>
+						</ul>
+					</div>
+			  </el-col>			
+			</el-row>
+			<el-row type="flex" class="row-bg" justify="center">
+			  <el-col :span="20" class="textList">
+				  <el-col :span="14">
+					  <template>
+					    <div class="infinite-list-wrapper" style="overflow:auto">
+					      <ul
+					        class="list"
+					        infinite-scroll-disabled="disabled">
+					        <li v-for="item in textData" class="list-item" v-for="item in textData">
+								<div class="textBox" >
+									 <h3 @click="goTotextDetail(item.TextId)">{{item.title}}</h3>
+									 <p class="content">
+										 {{item.content}}
+									 </p>
+									 <p class="message">
+											 <span class="author" @click="goToPersonInfo(item.author)">{{item.name}}</span>
+											 <span><span class="read">阅读:{{item.readAccount}}</span><span class="reply" @click="getTextById(item.TextId)">评论:{{item.replyAccount}}</span>
+											 <span class="time"><time :datetime="item.time">{{item.time}}</time></span>
+											 </span>
+									 </p>
+								</div>
+							</li>
+					      </ul>
+					      <p v-if="loading" class="loadTip"><el-divider>加载中...</el-divider></p>
+					      <p v-if="noMore" class="loadTip"><el-divider>没有更多了</el-divider></p>
+					    </div>
+					  </template>
+					  
+	  </el-col>
+					<el-col :span="7" class="right">
+						<div class="hot commendBox">
+							<div slot="header" class="clearfix">
+							  <span class="youLikeTitle">热门推荐</span>
+							</div>
+							<div class="hot">
+							  <ol class="list">
+								  <li v-for="(item, index) in hotCommend" :key="item.TextId">
+									  <h5 @click="getTextById(item.TextId)">{{item.title}}</h5>
+									  <p class="content">{{item.content}}</p>
+									  <p class="authorMSG"><span class="author" @click="goToPersonInfo(item.author)">{{item.name}}</span><time datetime="item.time">{{item.time}}</time></p>
+								  </li> 
+							  </ol>
+							</div>
+						</div>  
+						<div class="youLike commendBox">
+							<div slot="header" class="clearfix">
+							  <span class="youLikeTitle">猜你喜欢</span>
+							</div>
+							<div class="hot">
+							  <ol class="list">
+								  <li v-for="(item, index) in hotCommend" :key="item.TextId">
+									  <h5 @click="getTextById(item.TextId)">{{item.title}}</h5>
+									  <p class="content">{{item.content}}</p>
+									  <p class="authorMSG"><span class="author" @click="goToPersonInfo(item.author)">{{item.name}}</span><time datetime="item.time">{{item.time}}</time></p>
+								  </li> 
+							  </ol>
+							</div>
+						</div>  
+					</el-col>
+			  </el-col>
+			</el-row>
+			<div id="goTop">
+				<a href="#top" title="回到顶部"></a>
+			</div>
+		</div>
+		<script src="../js/text.js"></script>
+	</body>
+</html>

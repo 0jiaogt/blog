@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/managerTable.css">
+		<link rel="stylesheet" href="../css/page.css">
+		
+		<title>分类信息</title>
+	</head>
+	<body>
+		<div class="container col-md-12" id="app">
+			<div class="panel panel-default">
+			    <!-- Default panel contents -->
+			    <div class="panel-body">  
+			    <table class="table" border="0" >
+				   	<caption>分类信息</caption>
+				   	<thead>
+				   		<tr>
+				   			<th>分类编号</th>
+				   			<th>分类名称</th>
+				   			<th>删除</th>
+				   		</tr>
+				   	</thead>
+				   	<tbody>
+				   		<tr>
+				   			<td class="categoryId">TextId}}</td>
+				   			<td class="name">name}}</td>
+							<td><span class="btn btn-danger btn-xs btn-edit" >删除</span></td>
+				   		</tr>	
+				   	</tbody>
+			    </table>
+			    <span class="btn btn-default" id="add">添加</span>
+				</div>
+				<!-- 模态框 - 添加分类 -->
+				<!-- <div class="modal fade" id="myModal">
+				    <div class="modal-dialog modal-sm">
+				      <div class="modal-content">
+				   
+				        
+				        <div class="modal-header">
+				          <span class="modal-title">添加分类</span>
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        </div>
+				   
+				        <form>
+					        <div class="modal-body">
+					          	<div class="col-md-12">
+					          		<label>分类编号：</label><span id="cate_categoryId">${res.categoryId}</span>
+					          	</div>
+					          	<div class="col-md-12">
+						          	<label>分类名称：</label><span id="cate_name">${res.name}</span><input type="text" name="c_name" id="c_name" style="display: none;width:70%;"class="form-control" value="${res.name}"><span class="btn btn-warning btn-sm btn-edit-name">编辑</span>
+					            </div>
+					        </div>
+					   
+					        <div class="modal-footer">
+						        <button class="btn btn-secondary" data-dismiss="modal">确定</button>
+						    </div>
+				   		</form>
+				      </div>
+				    </div>
+				</div> -->
+				<div id="page" class="col-md-8 col-md-offset-3">
+				    <span class="prepage r_page">上一页</span>
+				    <ul>
+					    <li>1</li>
+					    <li class="active">2</li>
+					    <li>3</li>
+					    <li>4</li>
+					    <li>5</li>
+				    </ul>
+				    <span class="nextpage r_page">下一页</span>
+				    <span class="perPage">每页显示多少条： 10</span>
+				    <select name="showPage" id="showPage">
+					    <option value="">请选择</option>
+					    <option value="5">5</option>
+					    <option value="10">10</option>
+					    <option value="15">15</option>
+				    </select>
+				    <span class="totalPage">总条数：100</span>
+		        </div>
+		    </div>
+		</div>
+		<script src="../css/bootstrap/js/jquery-3.4.1.min.js"></script>
+		<script src="../css/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../js/global.js"></script>
+		<script src="../js/myAjax.js"></script>
+		<script src="../js/studentsInfo.js"></script>
+
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue-router.js"></script>
+
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+	    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</body>
+</html>

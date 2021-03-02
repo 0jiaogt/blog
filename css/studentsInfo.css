@@ -1,0 +1,24 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,
+.col-md-10,.col-md-11,.col-md-12 {
+	padding: 0;
+}
+.panel .table thead tr th:nth-child(1) {
+	width: 200px;
+}
+.panel .table thead tr th:nth-child(2) {
+	width: 130px;
+}
+.panel .table thead tr th:nth-child(3) {
+	width: 120px;
+}
+.panel .table thead tr th:nth-child(4) {
+	width: 130px;
+}
+table {
+	outline: none;
+}
+

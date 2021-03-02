@@ -1,0 +1,507 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body::after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+	opacity: 0;
+}
+ul li {
+	list-style: none;
+}
+a {
+	color: blue;
+}
+/* #app {
+	display: flex;
+	justify-content: space-around;
+} */
+.v_box {
+	position: absolute;
+	padding: 0;
+	/* overflow: hidden; */	
+	/* margin-left: 50px; */
+	left: 150px;
+}
+#video {
+	
+	object-fit: fill;
+	background-color: black;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	
+}
+.kind {
+	margin-right: 20px;
+	cursor: pointer;
+}
+.kind:hover {
+	color: red;
+}
+.v_box .setting {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background-image: url('../public/icons/setting.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 475px;
+	right: 55px;
+}
+#vControls {
+	height: 82px;
+	position: absolute;
+	z-index: 999;
+	top: 548px;
+	background-color: rgba(0, 0, 0,.4);
+	opacity: 1;
+	transition: all 1s ease;
+}
+#vControls .progressBar .progressBtn {
+	width: 8px;
+	height: 15px;
+	background-color: red;
+	position: absolute;
+	z-index: 99;
+	top: 10px;
+	cursor: pointer;
+}
+#vControls .progressBar .bar {
+	background-color: lightgray;
+	width: 850px;
+	height: 5px;
+	position: absolute;
+	top: 14px;
+}
+#vControls .progressBar .progress {
+	background-color: rgb(	0 191 255);
+	width: 0;
+	height: 5px;
+	position: absolute;
+	top: 14px;
+	z-index: 80;
+}
+#vControls .progressBar .buffer {
+	width: 0;
+	height: 5px;
+	background-color: #838B8B;
+	position: absolute;
+	top: 14px;
+	z-index: 70;
+}
+#vControls .progressBar {
+	height: 40px;
+	width: 850px;
+}
+#vControls .playOrPause {
+	width: 30px;
+	height: 30px;
+	background-image: url('../public/icons/play.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 50px;
+	cursor: pointer;
+}
+#vControls .volume {
+	width: 30px;
+	height: 30px;
+	background-image: url('../public/icons/sound.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	right: 290px;
+	z-index: 100;
+	cursor: pointer;
+}
+#vControls .ctrolVolume {
+	width: 100px;
+	height: 30px;
+	position: absolute;
+	right: 185px;
+}
+#vControls .ctrolVolume .columeBtn {
+	width: 4px;
+	height: 11px;
+	background-color: blue;
+	position: absolute;
+	top: 10px;
+	z-index: 99;
+	cursor: pointer;
+	/* left: 10px; */
+}
+
+#vControls .ctrolVolume .curColume {
+	height: 3px;
+	/* width: 100px; */
+	background-color: lightskyblue;
+	position: absolute;
+	top: 14px;
+	z-index: 88;
+	/* left: 10px; */
+}
+
+#vControls .ctrolVolume .columeTotal {
+	width: 100px;
+	height: 3px;
+	background-color: lightgray;
+	position: absolute;
+	top: 14px;
+	/* left: 10px; */
+}
+#vControls .speed {
+	position: absolute;
+	right: 100px;
+	top: 45px;
+}
+#vControls .speed span {
+	width: 40px;
+	height: 30px;
+	background-image: url('../public/icons/speed_1.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	top: -5px;
+	left: -60px;
+	cursor: pointer;
+} 
+#vControls .speed .speedList {
+	width: 50px;
+	border: 1px solid #00CDCa;
+	padding: 2px 4px;
+	margin: 0;
+	position: absolute;
+	top: -140px;
+	left: -70px;
+}
+#vControls .speed .speedList li {
+	text-align: center;
+	margin-bottom: 5px;
+	color: #ADD8E6;
+	cursor: pointer;
+}
+#vControls .speed .speedList li:hover {
+	color: #00BFFF;
+}
+#vControls .allScreen {
+	width: 28px;
+	height: 28px;
+	background-image: url('../public/icons/allScreen.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	right: 80px;
+	cursor: pointer;
+}
+/* #vControls .downLoad {
+	width: 28px;
+	height: 28px;
+	background-image: url('../public/icons/download.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+} */
+.v_box .vTitle{
+	display: flex;
+	justify-content: flex-start;
+}
+.v_box .vTitle>span {
+	width: 20px;
+	height: 20px;
+	background-image: url('../public/icons/title.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	margin-top: 23px;
+	margin-right: 4px;
+}
+.v_box .vTitle h3 {
+	font-size: 20px;
+	color: #FF6A6A;
+}
+.v_box .videoMSG p {
+	margin: 0;
+	margin-bottom: 15px;
+	font-size: 12px;
+	color: gray;
+}
+.v_box .box-card {
+	display: flex;
+	justify-content: space-around;
+}
+.v_box .box-card .el-card__body {
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+}
+.v_box .box-card .el-card__body .danmu{
+	width: 30px;
+	height: 30px;
+	margin-right: 20px;
+	background-image: url('../public/icons/danmu.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.v_box .box-card .el-card__body input {
+	height: 30px;	
+}
+.v_box .box-card .el-card__body p {
+	margin: 0;
+	line-height: 30px;
+}
+.v_box .box-card .el-card__body p a {
+	color: blue;
+}
+.v_box .box-card .el-card__body button span:hover{
+	/* background-color: lightblue; */
+	color: black;
+}
+.v_box p.likeAndGood {
+	display: flex;
+	justify-content: flex-start;
+}
+.v_box p.likeAndGood span{
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+	padding-left: 40px;
+	line-height: 30px;
+	cursor: pointer;
+}
+.v_box p span.good{
+	background-image: url('../public/icons/good.svg');
+	-webkit-background-size: 60% 60%;
+	background-size: 60% 60%;
+}
+.v_box p span.good:hover {
+	color: #00F5FF;
+	background-image: url('../public/icons/gooded.svg');
+}
+.v_box p span.like{
+	background-image: url('../public/icons/like.svg');
+	-webkit-background-size: 60% 60%;
+	background-size: 60% 70%;
+}
+.v_box p span.like:hover {
+	color: #00F5FF;
+	background-image: url('../public/icons/liked.svg');
+}
+.v_box h3.commend {
+	border-bottom: 1px dotted gray;
+	text-align: center;
+	margin-top: 80px;
+	padding-bottom: 10px;
+}
+.v_box .commendArea .commendShadow {
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	height: 70px;
+}
+.v_box .commendArea .commendShadow p {
+	text-align: center;
+}
+
+.v_box .commendArea span.numberCommend {
+	display: block;
+	margin-bottom: 20px;
+	
+}
+.el-divider {
+	clear: both;
+}
+.v_box .commendArea button {
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.v_box .commendArea .fCommend {
+	display: flex;
+	justify-content: flex-start;
+}
+.v_box .commendArea .fCommend img{
+	border-radius: 50%;
+	margin-right: 20px;
+}
+.v_box .commendArea .fCommend .msg{
+	display: flex;
+	justify-content: flex-start;
+}
+.v_box .commendArea .fCommend .msg time {
+	color: gray;
+	font-size: 12px;
+	line-height: 25px;
+}
+.v_box .commendArea .fCommend .name {
+	color: red;
+	font-size: 13px;
+	cursor: pointer;
+}
+.v_box .commendArea .fCommend p.content {
+	width: 780px;
+	font-size: 14px;
+	margin: 0;
+	margin-top: 6px;
+}
+.v_box .commendArea .fCommend .child {
+	display: flex;
+	justify-content: flex-start;
+}
+.v_box .commendArea .fCommend .child p.content {
+	width: 735px;
+}
+.v_box .commendArea .fCommend .child p.content span {
+	color: skyblue;
+	cursor: pointer;
+}
+.v_box .commendArea .fCommend .child p.content span:hover {
+	color: red;
+}
+.v_box .commendArea .fCommend .msg span {
+	font-size: 13px;
+	line-height: 25px;
+	color: gray;
+	cursor: pointer;
+	margin-left: 40px;
+}
+.v_box .commendArea .fCommend .msg .like {
+	/* width: 20px; */
+	height: 25px;
+	background-image: url('../public/icons/zan.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* background-position: -20px -2px; */
+	text-indent: 5em;
+	
+}
+.v_box .commendArea .fCommend .msg .reply {
+	background-color: rgba(220, 220, 220, .5);
+	padding: 0 10px;
+	border-radius: 20px 20px 20px 20px/14px 14px 14px 14px;
+}
+.el-pagination {
+	margin-bottom: 50px;
+}
+.rightBox {
+	width: 350px;
+	height: 500px;
+	float: right;
+	margin-right: 140px;
+}
+.rightBox .author {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 20px;
+}
+.rightBox .author>img {
+	cursor: pointer;
+}
+.rightBox .author .authorName {
+	color: #00CED1;
+	color: 14px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.rightBox .author p {
+	padding: 0;
+	margin: 5px 0 15px 5px;
+	font-size: 13px;
+	color: gray;
+}
+
+.rightBox .author button {
+	margin-top: 8px;
+	margin-left: 15px;
+}
+.rightBox button.msgToAuthor {
+	margin-left: 135px;
+}
+.rightBox .recommend {
+	
+}
+.rightBox .recommend>h4{
+	border-bottom: 1px dotted gray;
+	padding: 10px 5px;
+	font-weight: 400;
+	color: #FF6A6A;
+	background-color: rgba(72, 209, 204, .2);
+}
+.rightBox .recommend>div {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+.rightBox .recommend .message {
+	margin-left: 8px;
+}
+.rightBox .recommend .message h4 {
+	overflow: hidden;
+	display: -webkit-box;  /*设置多少行后多余的显示为省略号*/
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	margin: 0;
+	font-weight: 500;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+.rightBox .recommend .message h4:hover {
+	color: #0000FF;
+}
+.rightBox .recommend .message p {
+	color: gray;
+	font-size: 12px;
+	margin: 0;
+	margin-bottom: 5px;
+}
+.rightBox .recommend .message p span {
+	margin-right: 5px;
+}
+.rightBox .recommend .message p:nth-child(1) span:nth-child(1) {
+	cursor: pointer;
+}
+#goTop {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 80px;
+	bottom: 200px;
+}
+#goTop ul li a.goTop {
+	display: block;
+	width: 45px;
+	height: 45px;
+	background-image: url('../public/icons/goTop.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+#goTop a:hover {
+	color: red;
+}
+#goTop ul {
+	padding: 0;
+}
+#goTop ul li {
+	margin-bottom: 8px;
+	background-color: lightgray;
+	padding: 2px;
+}
+#goTop ul li a.home {
+	display: block;
+	width: 45px;
+	height: 45px;
+	background-image: url('../public/icons/home.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+} 
+#goTop ul li a.home:hover {
+	background-image: url('../public/icons/homed.svg');
+}

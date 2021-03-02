@@ -1,0 +1,58 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+html {
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	background-image: url('../public/images/qiao.jpg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+form {
+	width: 30%;
+	/* border: 1px solid black; */
+	color: reed;
+	padding: 100px;
+	background-color: rgba(	248, 248, 255, .5);
+	margin: 100px auto 0 auto;
+}
+form p {
+	width: 70%;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 25px;
+	position: relative;
+}
+form p label {
+	color: greenyellow;
+	cursor: pointer;
+}
+form p label:hover {
+	color: blue;
+}
+form p input {
+	height: 20px;
+	border: 1px solid gray;
+	font-size: 13px;
+	padding: 2px 4px;
+	color: blue;
+}
+form p .reg {
+	margin-right: 43px;
+}
+form p.confirm {
+	margin-top: 40px;
+}
+form p span.errorMSG {
+	font-size: 11px;
+	color: blue;
+	position: absolute;
+	top: 27px;
+	right: 120px;
+}

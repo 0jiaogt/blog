@@ -1,0 +1,41 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#myText {
+	border: 1px solid lightgrey;
+	min-height: 800px;
+	outline: none;
+	background-color: rgba(245, 245, 245, .6);
+	line-height: 32px;
+	font-size: 19px;
+}
+#show {
+	border: 1px solid lightgrey;
+	min-height: 800px;
+	line-height: 25px;
+	font-size: 18px;
+	padding: 15px;
+}
+#show h3 {
+	margin: 5px;
+}
+#show pre{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	background-color: #272822;
+	color: skyblue;
+	font-size: 15px;
+	border: none;
+}
+#show img {
+	margin-top: 15px;
+	margin-bottom: 15px;	
+}
+#show a:hover {
+	color: red;
+	cursor: pointer;
+}
+#show img:hover {
+	
+}

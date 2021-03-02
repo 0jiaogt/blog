@@ -1,0 +1,41 @@
+.panel form.search span{
+	box-shadow: 1px 1px 1px black;
+	/* background-color: lightgray; */
+}
+.panel form.search span:active {
+	box-shadow: -1px -1px 1px black;
+}
+.panel .table {
+	border: 1px solid lightgray;
+	table-layout: fixed;
+	margin-bottom: 0;
+}
+.panel .table th {
+	border-right: 1px solid lightgray;
+	text-align: center;
+}
+.panel .table td {
+	border-right: 1px solid lightgray;
+	text-align: center;
+	white-space:nowrap; 
+    overflow:hidden;     
+    text-overflow: ellipsis;  
+}
+.panel .table td span:hover {
+	color: black;
+}
+.panel .table tbody tr:nth-child(odd) {
+	background-color: rgba(151, 255, 255, .2);
+}
+.panel .table tbody tr:nth-child(even){
+	background-color: rgba(245, 245, 245, .4);
+}
+.panel .table tbody tr:hover {
+	background-color: rgba(151, 255, 255);
+}
+caption {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+}

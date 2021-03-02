@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/textDetail.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+		<script src="../js/global.js"></script>
+		<title>文章详情</title>
+	</head>
+	<body>
+		<div id="textDetail">
+		  <el-row>
+			<el-col :span="24">
+			  <div class="top" id="top">
+					<ul>
+						<li><a href="index.html">首页</a></li>
+						<li v-for="item in kindData" :key="item.id"
+						@click="handleKindSelect(item.id)">{{item.name}}</li>
+					</ul>
+					<div class="search">
+						  <el-autocomplete
+							v-model="state"
+							:fetch-suggestions="querySearchAsync"
+							placeholder="请输入内容"
+							@select="handleSelect"
+						  ></el-autocomplete>
+						   <el-button slot="append" icon="el-icon-search"@click="handleSearch"></el-button>
+					</div>
+					<ul class="loginMSG">
+						<li v-if="!isLogin"><a href="login.html">登录</a></li>
+						<li v-if="!isLogin"><a href="register.html">注册</a></li>
+						<li v-if="isLogin" @click="isLogin = false">退出</li>
+					</ul>
+				</div>
+			</el-col>			
+		  </el-row>
+		  <el-row type="flex" class="row-bg" justify="center">
+		    <el-col :span="20">
+				<el-col :span="6">
+					<div class="authorMSG">
+						<div class="author">
+							<img :src="authorMsg.src" alt="" width="60" height="60" @click="getPersonMSG(1)">
+							<div>
+								<span class="name" @click="getPersonMSG(1)">{{authorMsg.name}}</span>
+								<el-button type="warning" size="mini" @click="attentionPerson(1)">关注</el-button>
+							</div>
+						</div>
+						<div class="messageOther">
+							<ul>
+								<li>
+									<span>文章</span>
+									<span>{{authorMsg.textCount}}</span>
+								</li>
+								<li>
+									<span>视频</span>
+									<span>{{authorMsg.videoCount}}</span>
+								</li>
+								<li>
+									<span>粉丝</span>
+									<span>{{authorMsg.fansCount}}</span>
+								</li>
+								<li>
+									<span>访问</span>
+									<span>{{authorMsg.comeCount}}</span>
+								</li>
+							</ul>
+							<div class="tankMSG">
+								<p class="level"><span>等级：</span><span>{{authorMsg.grade}}</span></p>
+								<p class="integral"><span>积分：</span><span>{{authorMsg.integral}}</span></p>
+							</div>
+							<div class="contact">
+								 <el-button type="danger" plain size="mini">私信</el-button>
+								 <a href="">他的主页>></a>
+							</div>
+						</div>
+					</div>
+					<div class="newArticle authorMSG">
+						<h3><span></span>最新发布</h3>
+						<p v-for="item in newArticle" :key="item.TextId">
+							<a :href="'textDetail.html?'+item.TextId">{{item.title}}</a>
+						</p>
+					</div>
+					<div class="kindArae authorMSG">
+						<h3><span></span>分门别类</h3>
+						<div>
+							<p v-for="(item, index) in textKind" :key="index" @click="getKindText(item.categoryId, item.userId)">
+								<span>{{item.name}}</span>
+								<span>{{item.textCount}}篇</span>
+							</p>
+						</div>
+						<p class="more" @click="getMoreKind">查看更多</p>
+					</div>
+					<div class="textBack authorMSG">
+						<h3><span></span>文章归档</h3>
+						<div>
+							<p v-for="(item, index) in textBack" :key="index"
+								@click="getMonthText(item.time, item.userId)">
+								<span>{{toDate(item.time)}}</span>
+								<span>{{item.textCount}}篇</span>
+							</p>
+						</div>
+						<p class="more" @click="getAllBackTime">查看更多</p>
+					</div>
+				</el-col>
+				<el-col :span="17">
+					<div class="textContent el_box">
+						<h2>这是标题</h2>
+					</div>
+					<div class="comment el_box" id="commend">
+						<h3>2341评论</h3>
+						<el-input
+							   v-if="isLogin"
+							   type="textarea"
+							   :rows="5"
+							   placeholder="请输入内容"
+							   v-model="makeCommend">
+							 </el-input>
+							<div class="commendShadow" v-if="!isLogin">
+								 <p><a href="login.html">登录</a>后才能发表评论</p>
+							</div>
+						  <el-button type="primary" plain @click="sendCommend" id="sendComment">发表评论</el-button>
+						<el-divider></el-divider>
+						<el-collapse v-model="activeNames" @change="handleChange">
+						 <el-collapse-item :title="item1.name+ ':'+item1.content+'     '+item1.time" :name="index" v-for="(item1,index) in commentData" :key="item1.commentId">
+				<span class="replyBtn fReply" :title="'回复'+item1.name" @click="doReply">回复</span>
+							 <el-divider></el-divider>
+						    <div class="commentChild" v-for="item in item1.children" :key="item.replyId">
+								<img :src="item.src" alt="" width="30" height="30" @click="goToPersonInfo(item1.userId)">
+								<div>
+									<span class="name" @click="goToPersonInfo(item.userId)">{{item.name}}:</span>&nbsp;&nbsp;回复&nbsp;&nbsp;<span class="beReply" @click="goToPersonInfo(item.beReplyId)">{{item.beReplyName}}</span><span><time datetime="item.time">{{item.time}}</time></span> <span class="replyBtn" :title="'回复'+item.name" @click="doReply">回复</span>
+									<p class="content">{{item1.content}}</p>
+								</div>
+							</div>
+						</el-collapse>
+					</div>
+					<div class="commendInterfixText el_box" >
+						<div class="infinite-list-wrapper" style="overflow:auto">
+						    <ul
+						      class="list"
+						      v-infinite-scroll="loadMoreBottom"
+						      infinite-scroll-disabled="disabled">
+						      <li v-for="(item,index) in bottomCommend" :key="index" class="list-item">	
+								<div >
+									<h3  @click="goToTextDetail(item.TextId)">{{item.title}}</h3>
+									<p class="content">{{item.content}}</p>
+								</div>
+								<div class="message"  @click="goToPersonInfo(item.author)">
+									<span><time :datetime="item.time">{{item.time}}</time></span>
+									<span class="author" title="">作者：{{item.name}}</span>
+								</div>
+							</li>
+						    </ul>
+						    <p v-if="loading" class="loadTip">加载中...</p>
+						    <p v-if="noMore" class="loadTip">没有更多了</p>
+						  </div>
+						<!-- <div class="list" >
+							
+						</div> -->
+					</div>
+				</el-col>
+			</el-col>
+		  </el-row>
+		  <el-dialog title="评论内容" :visible.sync="dialogReplyVisible">
+		    <el-input
+		     v-if="isLogin"
+		     type="textarea"
+		     :rows="5"
+		     placeholder="请输入内容"
+		     v-model="makeReply">
+		   </el-input>
+		  <div class="commendShadow" v-if="!isLogin">
+		  	 <p><a href="login.html">登录</a>后才能发表评论</p>
+		  </div>
+		    <div slot="footer" class="dialog-footer">
+		      <el-button @click="cancleReply" v-if="isLogin">取 消</el-button>
+		      <el-button type="primary" @click="sendReply" v-if="isLogin">确 定</el-button>
+		    </div>
+		  </el-dialog>
+		  <div id="goTop">
+		  	<a href="#top" title="回到顶部"></a>
+		  </div>
+		</div>
+		<script src="../js/textDetail.js"></script>
+	</body>
+</html>

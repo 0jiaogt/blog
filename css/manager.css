@@ -1,0 +1,31 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: rgba(255, 193, 193, .2);
+}
+#main-nav.nav-tabs.nav-stacked>li>a>span{
+	color: #4A515B;
+}
+#main-nav.nav-tabs.nav-stacked>li.active>a, #main-nav.nav-tabs.nav-stacked>li>a:hover{
+	color: #FFF;
+	background: #3C4049;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4A515B), color-stop(100%, #3C4049));
+	background: -webkit-linear-gradient(top, #4A515B 0%, #3c4049 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049');
+	-ms-filter: "DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049')";
+}
+#main-nav.nav-tabs.nav-stacked a {
+	width: 219px;
+}
+
+
+.container .row .left_menu{
+	float: left;
+}
+iframe {
+	border: none;	
+	margin-top: 20px;
+	/* padding-bottom: 300px; */
+}

@@ -1,0 +1,101 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,
+.col-md-10,.col-md-11,.col-md-12 {
+	padding: 0;
+}
+.container {
+	/* margin-top: 20px; */
+	/* margin-bottom: 5px; */
+}
+.container h3{
+	font-size: 18px;
+	text-align: center;
+	color: gray;
+}
+
+.panel form.search span{
+	box-shadow: 1px 1px 1px black;
+	/* background-color: lightgray; */
+}
+.panel form.search span:active {
+	box-shadow: -1px -1px 1px black;
+}
+.panel .table {
+	border: 1px solid lightgray;
+}
+.panel .table th {
+	border-right: 1px solid lightgray;
+	text-align: center;
+}
+.panel .table td {
+	border-right: 1px solid lightgray;
+	text-align: center;
+}
+.panel .table td span:hover {
+	color: black;
+}
+.panel .table tbody tr:nth-child(odd) {
+	background-color: rgba(151, 255, 255, .2);
+}
+.panel .table tbody tr:nth-child(even){
+	background-color: rgba(245, 245, 245, .4);
+}
+.panel .table tbody tr:hover {
+	background-color: rgba(151, 255, 255);
+}
+caption {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+}
+.panel .table thead tr th:nth-child(1) {
+	width: 100px;
+}
+.panel .table thead tr th:nth-child(2) {
+	width: 100px;
+}
+.panel .table thead tr th:nth-child(3) {
+	width: 100px;
+}
+.panel .table thead tr th:nth-child(4) {
+	width: 100px;
+}
+.panel .table thead tr th:nth-child(5) {
+	width: 100px;
+}
+#edit_user .modal-body::after {
+	display: block;
+	content: '';
+	clear: both;
+	height: 0;
+	opacity: 0;
+}
+#edit_user.Show {
+	display: block;
+}
+#edit_user select {
+	cursor: pointer;
+	outline: none;
+	padding: 3px 2px;
+}
+#edit_user label {
+	font-weight: normal;
+	width: 100px;
+	text-align: right;
+	margin-right: 8px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+#edit_user form span.btn {
+	float: right;
+	margin-right: 20px;
+}
+#identity {
+	display: inline-block;
+	width: 70px;
+}
+

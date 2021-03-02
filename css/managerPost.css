@@ -1,0 +1,66 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.container{
+	/* margin-top: 20px; */
+}
+.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,
+.col-md-10,.col-md-11,.col-md-12 {
+	padding: 0;
+}
+.container .fr_text-btn:hover {
+	background-color: red;
+}
+.container .panel ul li{
+	border-bottom: 1px solid lightgray;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.container .panel ul li:hover {
+	background-color: rgba(245, 245, 245, .4);
+}
+.container .panel ul li h3 {
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-size: 20px;
+	display: inline-block;	
+}
+.container .panel ul li .jump{
+	cursor: pointer;
+}
+.container .panel ul li h3:hover {
+	color: red;
+}
+.container .panel ul li img {
+	margin-bottom: 15px;
+	margin-right: 4px;
+}
+.container .panel ul li .belong_info .author {
+	margin-right: 400px;
+}
+.container .panel .panel-body ul li .postId {
+	display: none;
+}
+.container .panel ul li p {
+	white-space:nowrap; 
+    overflow:hidden;     
+    text-overflow: ellipsis; 
+	margin-bottom: 4px;
+}
+.container .panel ul li span.btn-del {
+	display: none;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+.container .panel .info span {
+	
+	color: rgba(190, 190, 190);
+}
+
+.container .panel .belong_info span{
+	color: rgba(190, 190, 190);
+	padding: 4px 8px;
+}

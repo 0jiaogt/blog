@@ -1,0 +1,215 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+ul {
+	list-style: none;
+}
+.el-input__inner {
+	outline: 0;
+}
+.top {
+	display: flex;
+	justify-content: flex-start;
+	background-image: url('../public/images/baiyun.jpg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	padding: 20px;
+	
+}
+.top .kindCard {
+	width: 40%;
+	margin-left: 150px;
+	padding: 0 0 20px 20px;
+	margin-top: 20px;
+	
+}
+.top .kind {
+	margin: 10px;
+	display: flex;
+	justify-content: flex-start;
+	flex-flow: wrap; 
+}
+.top .kind>span {
+	width:25%;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 8px;
+	cursor: pointer;
+	font-size: 14px;
+}
+.top .kind span:hover {
+	color: lightblue;
+}
+.top .kind>span span {
+	width: 30px;
+	height: 11px;
+	background-color: red;
+	font-size: 10px;
+	padding: 1px;
+	margin: 4px 0 0 3px ;
+	border-radius: 2px;
+	text-align: center;
+	color: white;
+}
+.top .search {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+.top .search input {
+	width: 300px;
+}
+.videoCommend {
+	width: 80%;
+	margin: 25px auto;
+}
+.videoCommend h3 {
+	font-weight: 500;
+	font-size: 23px;
+	margin: 5px 0;
+	margin-right: 20px;
+	display: flex;
+	justify-content: flex-start;
+}
+.videoCommend h3 span {
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+}
+.videoCommend .hotCommend {
+	margin-bottom: 30px;
+}
+.videoCommend .hotCommend .title {
+	display: flex;
+	justify-content: flex-start;
+}
+.videoCommend .hotCommend .title p {
+	font-size: 13px;
+	color: #FF4040;	
+}
+.videoCommend .hotCommend  .more {
+	color: #838B83;
+	font-size: 14px;
+	float: right;
+	margin-top: 13px;
+	margin-right: 50px;
+	cursor: pointer;
+}
+.videoCommend .hotCommend  .more:hover {
+	color: #FF4500;
+}
+.videoCommend .hotCommend h3 span {
+	background-image: url('../public/icons/hot.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 90% 90%;
+}
+.videoCommend .title p {
+	display: flex;
+	justify-content: flex-start;
+	line-height: 30px;
+	margin-top: 5px;
+}
+.videoCommend .title p span {
+	width: 30px;
+	height: 30px;
+
+}
+.videoCommend .hotCommend .content{
+	display: flex;
+	justify-content: flex-start;
+	flex-flow: wrap;
+}
+.videoCommend .hotCommend .title p span {
+	background-image: url('../public/icons/fire.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+.videoCommend .content>div {
+	width: 230px;
+	margin: 10px 0;
+	margin-right: 12px;
+}
+.videoCommend .content img {
+	cursor: pointer;
+}
+.videoCommend .content p {
+	margin: 2px 0 5px 0;
+	font-size: 14px;
+	line-height: 25px;
+	overflow: hidden;
+	display: -webkit-box;  /*设置多少行后多余的显示为省略号*/
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	cursor: pointer;
+	transition: all .2s ease;
+}
+.videoCommend .content>div div:hover {
+	color: #00BFFF;
+}
+.videoCommend .content>div span {
+	background-image: url('../public/icons/kind.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 18px 18px;
+	background-repeat: no-repeat;
+	background-position: 0px 1px;
+	padding-left: 23px;
+	font-size: 14px;
+	color: gray;
+	cursor: pointer;
+}
+.videoCommend .content>div span:hover {
+	color: #00BFFF
+}
+.videoCommend .qianyan .title h3 span{
+	background-image: url('../public/icons/qianyan.svg');
+	-webkit-background-size: 90% 90%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.videoCommend .qianyan .title p span {
+	background-image: url('../public/icons/qianyanhangye.svg');
+	-webkit-background-size: ;
+	background-size: 20px 20px;
+	background-position: 3px 5px;
+	background-repeat: no-repeat;
+}
+.videoCommend .second .title h3 span{
+	background-image: url('../public/icons/qianyan.svg');
+	-webkit-background-size: 90% 90%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.videoCommend .second .title p span {
+	background-image: url('../public/icons/qianyanhangye.svg');
+	-webkit-background-size: ;
+	background-size: 20px 20px;
+	background-position: 3px 5px;
+	background-repeat: no-repeat;
+}
+#menu {
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	position: fixed;
+	z-index: 99;
+	top: 280px;
+	right: 70px;
+}
+#menu ul {
+	padding: 0;
+	margin: 8px 0;
+
+}
+#menu ul li {
+	padding: 4px 4px;
+	color: gray;
+	text-align: center;
+	padding-bottom: 8px;
+	cursor: pointer;
+}
+#menu ul li.active {
+	background-color: #8DEEEE;
+}
+#menu ul li:hover {
+	background-color: #8DEEEE;
+	color: white;
+}

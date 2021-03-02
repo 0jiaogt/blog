@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/issue.css">
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+		<title>问答专栏</title>
+	</head>
+	<body>
+		<div id="issue">
+			<el-row type="flex" class="row-bg" justify="center">
+			  <el-col :span="18">
+				  <div class="top">
+					  <div>
+						  <el-breadcrumb separator-class="el-icon-arrow-right">
+						    <el-breadcrumb-item><a href="index.html">首页</a></el-breadcrumb-item>
+						    <el-breadcrumb-item>问答专栏</el-breadcrumb-item>
+						  </el-breadcrumb>
+						  <el-autocomplete
+						  						class="inline-input"
+						  						v-model="state"
+						  						:fetch-suggestions="querySearch"
+						  						placeholder="请输入内容"
+						  						:trigger-on-focus="false"
+						  						@select="handleSelect"
+						  ></el-autocomplete>
+						   <el-button type="primary" plain @click="search">搜索</el-button>
+					  </div>
+					 
+				  </div>
+				  <div class="content">
+					  <template>
+					    <div class="infinite-list-wrapper" style="overflow:auto">
+					      <ul
+					        class="list"
+					        infinite-scroll-disabled="disabled">
+					        <li v-for="item in issueData" class="list-item">
+								<div>
+									<h3 @click="gotoDetail(item.postId)">{{item.title}}</h3>
+									<p class="content">
+										{{item.content}}
+									</p>
+									<p class="message"><span>回答:{{item.replyAccount}}</span><span><time :datetime="item.time">{{item.time}}</time></span></p>
+								</div>
+							</li>
+					      </ul>
+					      <p v-if="loading"><el-divider>加载中...</el-divider></p>
+					      <p v-if="noMore"><el-divider>没有更多了</el-divider></p>
+					    </div>
+					  </template>
+				  </div>
+			  </el-col>
+			</el-row>
+		</div>
+		
+		
+		<script src="../js/issue.js"></script>
+	</body>
+</html>

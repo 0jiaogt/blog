@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>视频观看</title>
+		<script src="../js/vue.js"></script>
+		<link rel="stylesheet" href="../css/videoShow.css">
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="http://cdn.suoluomei.com/common/js2.0/axios/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="top"></div>
+			<div class="v_box" ref="leftBox">
+				<div class="vTitle"><span></span><h3>{{videoData.title}}</h3>
+				</div>
+				<div class="videoMSG">
+					<p>
+						<span class="kind" title="查看分类信息" @click="getCategoryById(videoData.categoryId)">{{videoData.cateName}}</span> <span><time :datetime="videoData.time">{{videoData.time}}</time></span>
+					</p>
+					<p>
+						<span>{{videoData.readAccount}}次播放</span> <span>未经作者允许不可转载</span>
+					</p>
+				</div>
+				<video id="video"  width="852" height="500" ref="video" @dblclick="doubleScreenFulScreen" @loadedmetadata="loadedmetadata" @timeupdate="timeupdate" @ended="ended" @progress="onprogress" @click="playOrPauseHandle" @mousemove="showOrHideCtrols" @keyup="ctrolForKey" @volumechange="volumeChange">
+					<source src="../public/video/初音.mp4" type="video/MP4">
+					你的浏览器不支持h5播放器，请下载一个好点的
+				</video>
+				<div id="vControls" ref="ctrolBox" @mouseenter="mouseenterCtrol"
+					@mouseleave="showOrHideCtrols">
+					<div class="progressBar" ref="progressBar"
+						@click="move"
+						>
+						<span class="progressBtn" 
+							@mousedown="ctrolProgress($event)" ref="slipBtn"></span>
+						<div class="progress" ref="progress" ></div>
+						<div class="bar" ref="bar"></div>
+						<div class="buffer" ref="buffer1"></div>
+					</div>
+					<span class="playOrPause" 
+						@click="playOrPauseHandle" ref="playOrPause"></span>
+					<span class="volume" 
+						@click="volumeHandle" ref="volume"></span>
+					<div class="ctrolVolume" ref="ctrolVolume"
+						@click="moveColume">
+						<span class="columeBtn" ref="columeBtn"
+							@mousedown="ctrolColume($event)"></span>
+						<div class="curColume" ref="curColume"></div>
+						<div class="columeTotal"></div>
+					</div>
+					<div class="speed">
+						<span @click="handleSpeed" ref="speedIcon"></span>
+						<ul class="speedList" v-if="rateStatus">
+							<li v-for="(item, index) in rate" :key="index"
+								@click="selectSpeed(index)">
+							{{item.rName == 2.0 ? '2.0' + '倍': item.rName == 1.0 ? '正常' : item.rName + '倍'}}</li>
+						</ul>
+					</div>
+					<span class="allScreen"
+						@click="handleScreenFul"></span>
+						<div class="pauseFlag"></div>
+				</div>
+				<el-card class="box-card">
+				  
+					  <span class="danmu" @click="shiftDanmu" ref="danmu"></span>
+					 <el-input v-if="isLogin" placeholder="请输入内容" v-model="makeDanmu" class="input-with-select">
+					      <el-button slot="append" @click="sendDanmu" >发送</el-button>
+					    </el-input>
+						<p v-if="!isLogin">检测到您未登录，请<a href="login.html">登录</a>或<a href="register.html">注册</a></p>
+				</el-card>
+				<p class="likeAndGood" ref="likeAndGood"><span class="good" @click="videoGood">赞</span> <span class="like" @click="collectVideo">收藏</span></p>
+				 <el-divider></el-divider>
+				 <div class="commendArea">
+					 <h3 class="commend">评论区</h3>
+					 <span class="numberCommend">555 条评论</span>
+					 <el-input 
+					   v-if="isLogin"
+					   type="textarea"
+					   :rows="5"
+					   placeholder="请输入内容"
+					   v-model="makeCommend">
+					 </el-input>
+					<div class="commendShadow" v-if="!isLogin">
+						 <p><a href="login.html">登录</a>后才能发表评论</p>
+					</div>
+				  <el-button type="primary" plain @click="sendCommend">发表评论</el-button>
+				<el-divider></el-divider>
+				<div class="fCommend" v-for="(item,index) in commentData" :key="item.commentId">
+					<img :src="item.src" alt="" width="50" height="50" @click="goToPersonInfo(item.userId)">			
+					<div>
+						<span class="name" @click="goToPersonInfo(item.userId)">{{item.name}}</span>
+						<p class="content">{{item.content}}</p>
+						<p class="msg">
+							<time :datetime="item.time">{{item.time}}</time>
+							<span class="like" @click="commendHandle(item.commentId, $event, index)">{{item.like}}</span>
+							<span class="reply" @click="doReply(item.commentId, item.userId)">回复</span>
+							
+						</p>
+							<div class="child" v-for="(item1,index1) in item.children">
+								<img :src="item1.src" alt="" width="30" height="30" @click="goToPersonInfo(item.userId)">			
+								<div>
+									<span class="name" @click="goToPersonInfo(item.userId)">{{item1.name}}</span>
+									<p class="content"><span @click="goToPersonInfo(item1.beReplyUserId)">//@{{item1.beReplyName}}</span>  {{item1.content}}</p>
+									<p class="msg">
+										<time :datetime="item1.time">{{item1.time}}</time>
+										<span class="like" @click="replyHandle(item1.commentId, item1.replyId, $event, index, index1)">{{item.like}}</span>
+										<span class="reply" @click="doReply(item1.commentId, item1.userId, item1.name)">回复</span>
+									</p>
+								</div>
+							</div>
+							<el-divider></el-divider>
+					</div>
+				</div>
+				<el-pagination
+					  background
+				      @size-change="handleSizeChange"
+				      @current-change="handleCurrentChange"
+				      :current-page="commentPage.commentCurrentPage"
+				      :page-sizes="[100, 200, 300, 400]"
+				      :page-size="100"
+				      layout="total, sizes, prev, pager, next, jumper"
+				      :total="commentPage.total">
+				    </el-pagination>
+				 </div>
+			</div>
+			<el-dialog title="评论内容" :visible.sync="dialogReplyVisible">
+			  <el-input
+			   v-if="isLogin"
+			   type="textarea"
+			   :rows="5"
+			   placeholder="请输入内容"
+			   v-model="makeReply">
+			 </el-input>
+			<div class="commendShadow" v-if="!isLogin">
+				 <p><a href="login.html">登录</a>后才能发表评论</p>
+			</div>
+			  <div slot="footer" class="dialog-footer">
+			    <el-button @click="cancleReply">取 消</el-button>
+			    <el-button type="primary" @click="sendReply">确 定</el-button>
+			  </div>
+			</el-dialog>
+			<div class="rightBox">
+				<div class="author">
+					<img src="../public/images/baiyun.jpg" alt="" width="45" height="45">
+					<div>
+						<span class="authorName" @click="goToPersonInfo(author.userId)">{{author.name}}</span>
+						<p>风不动草不弯</p>
+					</div>
+					<div>
+						 <el-button size="mini" type="success" round						@click="doAttention(author.userId)" v-if="!attenStatus">关注</el-button>
+						  <el-button size="mini" round	@click="cancleAttention(author.userId)" v-if="attenStatus">取消关注</el-button>
+					</div>
+				</div>
+				<el-button type="danger" plain size="small" class="msgToAuthor"
+					@click="sendMSG(author.userId)">私信我</el-button>
+				<div class="recommend">
+					<h4>相关推荐</h4>
+					<div v-for="item in commendVideo" :key="item.id">
+						<img :src="item.src" alt="" width="150" height="90" @click="gotoVideoDetail(item.TextId)">
+						<div class="message">
+							<h4 @click="gotoVideoDetail(item.TextId)">{{item.title}}</h4>
+							<p><span>{{item.name}}</span></p>
+							<p><span>{{item.readAccount}}播放</span><span>{{item.replyAccount}}评论</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="goTop">
+				<ul>
+					<li><a href="index.html" title="回到首页" class="home"></a></li>
+					<li><a href="#top" title="回到顶部" class="goTop"></a></li>
+				</ul>
+				
+			</div>
+		</div>
+		<script src="../js/videoShow.js"></script>
+		
+	</body>
+</html>

@@ -1,0 +1,407 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body {
+	background-color: rgb(248 248 255);
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.navTop ul li a:hover {
+	color: blue;
+} 
+.logo img{
+	display: block;
+}
+.navTop {
+	display: flex;
+	justify-content: space-between;
+	background-color: rgba(135, 206, 250, .4);
+}
+.navTop .navLeft {
+	margin-left: 152px;
+}
+.navTop .navRight {
+	margin-right: 150px;
+}
+.navTop ul {
+	padding: 0;
+}
+.navTop ul li {
+	text-align: center;
+	padding: 10px 0;
+	line-height: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+.navTop ul.navLeft li {
+	float: left;
+	width: 100px;
+}
+.navTop ul.navLeft li:hover {
+	background-color: rgba(0, 191, 255, .7);
+	color: white;
+}
+.navTop ul.navLeft li a {
+	display: block;
+	width: 100%;
+}
+.navTop ul.navRight li {
+	float: left;
+	margin-right: 20px;
+}
+.navTop ul.navRight li:hover {
+	color: blue;
+}
+.navTop ul.navRight li.icon img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+.navTop ul::after {
+	content: '';
+	display: block;
+	height: 0;
+	opacity: 0;
+	clear: both;
+}
+.contentLeft {
+	float: left;
+	width: 60%;
+	margin-left: 10%;
+}
+.contentRight {
+	float: right;
+	width: 20%;
+	margin-right: 9%;
+}
+.el-carousel__item h3 {
+color: #475669;
+font-size: 14px;
+opacity: 0.75;
+line-height: 150px;
+margin: 0;
+}
+.el-carousel__item:nth-child(2n) {
+ background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+ background-color: #d3dce6;
+}	
+.text {
+font-size: 14px;
+}
+
+.item {
+margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+display: table;
+content: "";
+}
+.clearfix:after {
+clear: both
+}
+.box-card h4 {
+	font-size: 20px;
+	margin-bottom: 5px;
+	color: rgb(0 191 255);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.box-card h4:hover {
+	color: red;
+}
+.box-card p.images {
+	margin-right: 15px;
+}
+.box-card p i {
+	display: block;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+}
+.box-card p img {
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+.box-card .tank:hover img{
+	width: 110px;
+	height: 110px;
+	transition: all .4s ease;
+	
+}
+.box-card div.content {
+	display: flex;
+}
+.box-card .authorMessage {
+	margin-top: 20px;
+}
+.box-card .text {
+	color: gray;
+	overflow: hidden;
+	/* text-overflow: ellipsis; */
+	font-size: 15px;
+	display: -webkit-box;  /*设置多少行后多余的显示为省略号*/
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	line-height: 28px;
+	word-spacing: 1em;
+}
+.box-card .authorMessage .author {
+	display: inline-block;
+	background-image: url('../public/icons/user.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat; 
+	background-position: -24px 0px;
+	text-indent: 1.2em;
+	color: gray;
+	cursor: pointer;
+}
+.box-card .authorMessage .author:hover {
+	color: darkred;
+}
+ time {
+	color: gray;
+	font-weight: 100;
+	font-size: 14px;
+	background-image: url('../public/icons/time.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat; 
+	background-position: -38px 0px;
+	padding-left: 20px;
+}
+.box-card .authorMessage span.account {
+	float: right;
+	margin-right: 40px;
+}
+.box-card .authorMessage span.account .num {
+	background-image: url('../public/icons/skim.svg');
+	-webkit-background-size: 60% 60%;
+	background-size: 60% 60%;
+	background-repeat: no-repeat; 
+	background-position: -0px 5px;
+	padding-left: 20px;
+	color: gray;
+	font-weight: 100;
+}
+.box-card .authorMessage span.account .comment {
+	background-image: url('../public/icons/comment.svg');
+	-webkit-background-size: 80% 80%;
+	background-size: 80% 80%;
+	background-repeat: no-repeat; 
+	background-position: -5px 3px;
+	padding-left: 25px;
+	color: gray;
+	cursor: pointer;
+}
+.box-card .authorMessage span.account .comment:hover {
+	color: blue;
+}
+.box-card .authorMessage span.account .like {
+	background-image: url('../public/icons/like.svg');
+	-webkit-background-size: 80% 80%;
+	background-size: 80% 80%;
+	background-repeat: no-repeat; 
+	background-position: -10px 3px;
+	padding-left: 25px;
+	color: red;
+}
+.TexteEnd {
+	text-align: center;
+}
+.contentRight .hotTitle {
+	color: red;
+}
+.box-card {
+	margin-bottom: 49px;
+}
+.hotList .hotTitle {
+	background-image: url('../public/icons/hot.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-position: -32px 0;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+.hotList .hot{
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+.hotList .hot ol {
+	position: absolute;
+}
+.hotList .hot ol li {
+	width: 260px;
+	line-height: 25px;
+	color: gray;
+	font-size: 14px;
+	border-bottom: 1px dotted gray;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.hotList .hot li:hover {
+	color: red;
+}
+.youLike .youLikeTitle {
+	background-image: url('../public/icons/youLike.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-position: -32px 0;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	color: blue;
+}
+.youLike ol.list li {
+	width: 260px;
+	border-bottom: 1px dotted gray;
+	padding: 5px 0;
+}
+.youLike ol.list li h5{
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.youLike ol.list li h5:hover {
+	color: red;
+}
+.youLike ol.list li p.content {
+	font-size: 12px;
+	color: gray;
+	text-indent: 2em;
+	overflow: hidden;
+	display: -webkit-box;  /*设置多少行后多余的显示为省略号*/
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.youLike ol.list li p.authorMSG .author, .youLike ol.list li p.authorMSG time {
+	font-size: 14px;
+	color: gray;
+}
+.youLike ol.list li p.authorMSG .author {
+	background-image: url('../public/icons/user.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat; 
+	background-position: -24px 0px;
+	padding-left: 30px;
+	margin-right: 10px;
+}
+.textTime .textTimeTile {
+	background-image: url('../public/icons/textIn.svg');
+	-webkit-background-size: 80% 80%;
+	background-size: 80% 80%;
+	background-repeat: no-repeat; 
+	background-position: -22px 3px;
+	padding-left: 20px;
+	margin-right: 10px;
+	color: black;
+}
+.textTime .time {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: wrap;  /*设置换行*/	
+}
+.textTime .time span {
+	width: 40%;
+	color: black;
+	margin-bottom: 10px;
+	text-decoration: underline;
+	text-align: center;
+	cursor: pointer;
+	text-align: left;
+	padding-left: 20px;
+}
+.textTime .time span:hover {
+	color: blue;
+	text-decoration: none;
+}
+.upMan .UpManTitle {
+	background-image: url('../public/icons/man.svg');
+	-webkit-background-size: 80% 80%;
+	background-size: 80% 80%;
+	background-repeat: no-repeat; 
+	background-position: -22px 3px;
+	padding-left: 20px;
+	margin-right: 10px;
+	color: purple;
+}
+.upMan .up {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between;
+}
+.upMan .up span {
+	width: 30%;
+	color: rgb(	180 82 205);
+	cursor: pointer;
+}
+.upMan .up span:nth-child(2n) {
+	color: rgb(145 44 238);
+}
+.upMan .up span:hover {
+	text-decoration: underline;
+	color: red;
+}
+.friendship .friendshipTitle {
+	background-image: url('../public/icons/lianjie.svg');
+	-webkit-background-size: 80% 80%;
+	background-size: 80% 80%;
+	background-repeat: no-repeat; 
+	background-position: -22px 3px;
+	padding-left: 20px;
+	margin-right: 10px;
+	color: rgb(138 43 226);
+}
+.friendship {
+	color: red;
+	background-color: rgba(255, 0, 255);
+}
+.friendship .friendshipContent {
+	display: flex;
+	flex-flow: wrap;
+	background-color: rgba(255, 0, 255, .1);
+	justify-content: space-between;
+}
+.friendship .friendshipContent a {
+	color: blue;
+	margin-bottom: 10px;
+}
+.friendship .friendshipContent a:hover {
+	 text-decoration: underline;
+	 color: red;	
+}
+#goTop {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 80px;
+	bottom: 60px;
+}
+#goTop a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: url('../public/icons/goTop.svg');
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+#goTop a:hover {
+	color: red;
+}

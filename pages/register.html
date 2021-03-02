@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册页面</title>
+		
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../css/eindex.css">
+		<script src="../js/eUiindex.js"></script>
+		<link rel="stylesheet" href="../css/register.css">
+	</head>
+	<body>
+		<div id="register">
+			<form :model="ruleForm" ref="ruleForm">
+				<!-- <p><label for="userId">用户名：</label><input type="text" name="userId" id="userId"></p>
+				<p><label for="name">姓名：</label><input type="text" name="name" id="name"></p>
+				<p>
+					<label for="phone">手机号码：</label><input type="text" name="phone" id="phone">
+				</p> -->
+				<p>
+					<label for="password">密码：</label><input type="password" name="password" id="password" v-model="ruleForm.pass">
+					<span class="errorMSG">错误信息</span>
+				</p>
+				
+				<p>
+					<label for="Dpassword">确认密码：</label><input type="password" name="Dpassword" id="Dpassword" v-model="ruleForm.checkPass">
+					<span class="errorMSG">错误信息</span>
+				</p>
+				<p class="confirm">
+					<el-button class="reg" type="primary" plain size="small" >注册</el-button>
+					<el-button @click="resetForm('ruleForm')">重置</el-button>
+				</p>
+			</form>
+			
+		</div>
+		<script src="../js/register.js"></script>
+	</body>
+</html>

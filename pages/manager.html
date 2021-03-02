@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>后台子系统</title>
+		<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/manager.css">
+	</head>
+	<body>
+		<div class="container col-md-12">
+			<div class="row">
+				<div class="left_menu col-md-2">  
+					<ul id="main-nav" class="nav nav-tabs nav-stacked">
+						<li>
+							<a href="index.html">
+								<i class="glyphicon glyphicon-th-large"></i>
+								首页
+							</a>
+						</li>
+						<!-- 起点 -->
+						<li class="active">
+							<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								用户管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="userInfo.html"><i class="glyphicon glyphicon-user"></i>用户信息管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+						<!-- 起点 -->
+						<li>
+							<a href="#goodManage" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								文章管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="goodManage" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="managerText.html"><i class="glyphicon glyphicon-file"></i>文章信息管理</a></li>
+									<li><a href="managerComment.html"><i class="glyphicon glyphicon-comment"></i>文章评论管理</a></li>
+								    <li><a href="textReply.html"><i class="glyphicon glyphicon-duplicate"></i>文章回复管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+						<!-- 起点 -->
+						<li>
+							<a href="#post" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								贴子管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="post" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="managerPost.html"><i class="glyphicon glyphicon-envelope"></i>帖子信息管理</a></li>
+									<li><a href="postComment.html"><i class="glyphicon glyphicon-duplicate"></i>贴子评论管理</a></li>
+									<li><a href="postReply.html"><i class="glyphicon glyphicon-comment"></i>贴子回复管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+						<!-- 起点 -->
+						<li>
+							<a href="#video" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								视频管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="video" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="managerVideo.html"><i class="glyphicon glyphicon-film"></i>视频信息管理</a></li>
+									<li><a href="videoComment.html"><i class="glyphicon glyphicon-film"></i>视频评论管理</a></li>
+									<li><a href="videoReply.html"><i class="glyphicon glyphicon-film"></i>视频回复管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+						<!-- 起点 -->
+						<li>
+							<a href="#draft" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								稿子管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="draft" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="managerContribute.html"><i class="glyphicon glyphicon-duplicate"></i>稿子管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+						<!-- 起点 -->
+						<li>
+							<a href="#set" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-cog"></i>
+								分类管理
+								<span class="pull-right glyphicon glyphicon-chevron-down"></span>
+							</a>
+								<!-- 二级菜单 -->
+								<ul id="set" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="managerCategory.html"><i class="glyphicon glyphicon-th-list"></i>分类管理</a></li>
+								</ul>
+						</li>
+						<!-- 终点 这是一个菜单项-->
+					</ul>
+				</div>
+				<div class="right col-md-10">
+					<iframe src="index.html" width="100%" height="720px" scrolling="no" id="managerIframe"></iframe>
+				</div>
+			</div>
+		</div>
+		<script src="../css/bootstrap/js/jquery-3.4.1.min.js"></script>
+		<script src="../css/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../js/global.js"></script>
+		<script src="../js/manager.js"></script>
+
+		
+	</body>
+</html>

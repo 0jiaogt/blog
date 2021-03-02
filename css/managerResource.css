@@ -1,0 +1,26 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,
+.col-md-10,.col-md-11,.col-md-12 {
+	padding: 0;
+}
+
+.container .panel table span.r_up, .container .panel table span.r_down{
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0 1px;
+	margin-left: 8px;
+	cursor: pointer;
+}
+.container .panel table span.r_up:hover, .container .panel table span.r_down:hover {
+	color: red;
+}
+.container .panel form.search input {
+	font-size: 13px;
+	line-height: 22px;
+	padding: 2px 2px 2px 4px;
+	border: 1px solid lightgray;
+	outline: none;
+}
